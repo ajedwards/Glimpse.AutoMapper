@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 
-using Glimpse.Core.Extensibility;
-
 using AutoMapper;
+
+using Glimpse.Core.Extensibility;
 
 namespace Glimpse.AutoMapper
 {
