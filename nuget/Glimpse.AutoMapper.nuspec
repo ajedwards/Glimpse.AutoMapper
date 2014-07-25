@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Glimpse.AutoMapper</id>
+        <version>0.0.0</version>
+        <title>Glimpse for AutoMapper</title>
+        <authors>Adrian Edwards</authors>
+        <licenseUrl>https://github.com/ajedwards/Glimpse.AutoMapper/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/ajedwards/Glimpse.AutoMapper</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Simple Glimpse plugin to display all configured type mappings for AutoMapper.</description>
+        <summary>Simple Glimpse plugin for AutoMapper.</summary>
+        <language />
+        <tags>Glimpse AutoMapper plugin map mapping ASP.NET Web MVC diagnostics debugging</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5">
+                <dependency id="Glimpse" version="1.8.6" />
+                <dependency id="AutoMapper" version="3.2.1" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files />
+</package>
