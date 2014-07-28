@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{7D7C4D9A
 		nuget\Glimpse.AutoMapper.nuspec = nuget\Glimpse.AutoMapper.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glimpse.AutoMapper.TestSite", "Glimpse.AutoMapper.TestSite\Glimpse.AutoMapper.TestSite.csproj", "{DF5174EC-810D-49D3-AD81-1BA5BF9485AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{16D90EB4-8B77-4426-86A2-8C1E9CB9A295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{16D90EB4-8B77-4426-86A2-8C1E9CB9A295}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D90EB4-8B77-4426-86A2-8C1E9CB9A295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5174EC-810D-49D3-AD81-1BA5BF9485AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF5174EC-810D-49D3-AD81-1BA5BF9485AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF5174EC-810D-49D3-AD81-1BA5BF9485AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5174EC-810D-49D3-AD81-1BA5BF9485AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
