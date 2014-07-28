@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 
 using AutoMapper;
@@ -41,16 +42,13 @@ namespace Glimpse.AutoMapper
         {
             var plugin = Plugin.Create(Headers);
 
-            if (context != null)
+            TypeMap[] typeMaps = this._configuration.GetAllTypeMaps();
+
+            foreach (var profileName in typeMaps.Select(map => map.Profile).Distinct())
             {
-                TypeMap[] typeMaps = this._configuration.GetAllTypeMaps();
+                var typeMapSection = new TypeMapTabSection(this._configuration, profileName);
 
-                foreach (var profileName in typeMaps.Select(map => map.Profile).Distinct())
-                {
-                    var typeMapSection = new TypeMapTabSection(this._configuration, profileName);
-
-                    plugin.AddRow().Column(profileName).Column(typeMapSection);
-                }
+                plugin.AddRow().Column(profileName).Column(typeMapSection);
             }
 
             return plugin;
