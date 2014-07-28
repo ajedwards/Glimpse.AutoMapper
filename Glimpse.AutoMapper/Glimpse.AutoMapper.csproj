@@ -49,6 +49,7 @@
     <Compile Include="TypeMapTabSection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Glimpse.AutoMapper.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
