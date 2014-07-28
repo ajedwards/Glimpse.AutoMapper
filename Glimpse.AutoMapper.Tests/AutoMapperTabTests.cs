@@ -14,6 +14,12 @@ namespace Glimpse.AutoMapper.Tests
     public class AutoMapperTabTests
     {
         [Test]
+        public void TestConstructorThrowsArgumentNullExceptionForNullConfiguration()
+        {
+            Assert.Throws<ArgumentNullException>(() => new AutoMapperTab(null));
+        }
+
+        [Test]
         public void TestExecuteOnAlwaysReturnsEndRequest()
         {
             var testTab = new AutoMapperTab();
