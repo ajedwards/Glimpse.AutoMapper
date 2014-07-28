@@ -1,4 +1,4 @@
-Glimpse for AutoMapper
+Glimpse for AutoMapper [![Build status](https://ci.appveyor.com/api/projects/status/3amkkkftnrr6d0wy/branch/master)](https://ci.appveyor.com/project/ajedwards/glimpse-automapper/branch/master)
 ======================
 
 Description
@@ -19,6 +19,8 @@ Support
 -------
 
 Create an issue here on GitHub, or fork the project and send a pull request.
+
+
 
 Open Source License
 -------------------
