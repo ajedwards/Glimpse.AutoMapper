@@ -29,9 +29,7 @@ namespace Glimpse.AutoMapper.Tests
             Mapper.Reset();
             Mapper.Initialize(configuration => expectedProfiles.ToList().ForEach(configuration.AddProfile));
 
-            var tabContext = new AutoMapperTabContext(Mapper.Engine.ConfigurationProvider);
-
-            var actualTabSection = (TabSection)new AutoMapperTab().GetData(tabContext);
+            var actualTabSection = (TabSection)new AutoMapperTab(Mapper.Engine.ConfigurationProvider).GetData(null);
 
             Assert.AreEqual(1 + expectedProfiles.Length, actualTabSection.Rows.Count());
         }
@@ -41,9 +39,7 @@ namespace Glimpse.AutoMapper.Tests
         {
             Mapper.Reset();
 
-            var tabContext = new AutoMapperTabContext(Mapper.Engine.ConfigurationProvider);
-
-            var actualTabSection = (TabSection)new AutoMapperTab().GetData(tabContext);
+            var actualTabSection = (TabSection)new AutoMapperTab(Mapper.Engine.ConfigurationProvider).GetData(null);
 
             Assert.AreEqual(1, actualTabSection.Rows.Count());
         }
@@ -67,11 +63,11 @@ namespace Glimpse.AutoMapper.Tests
         }
 
         [Test]
-        public void TestRequestContextTypeOnAlwaysReturnsIConfigurationProvider()
+        public void TestRequestContextTypeOnAlwaysReturnsNull()
         {
             var testTab = new AutoMapperTab();
 
-            Assert.AreEqual(typeof(IConfigurationProvider), testTab.RequestContextType);
+            Assert.IsNull(testTab.RequestContextType);
         }
 
         private class TestProfile1 : Profile

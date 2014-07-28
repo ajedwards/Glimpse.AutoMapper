@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 using AutoMapper;
 
@@ -7,9 +8,26 @@ using Glimpse.Core.Tab.Assist;
 
 namespace Glimpse.AutoMapper
 {
-    public class AutoMapperTab : TabBase<IConfigurationProvider>
+    public class AutoMapperTab : TabBase
     {
         private static readonly string[] Headers = { "Profile", "Type Map" };
+
+        private readonly IConfigurationProvider _configuration;
+
+        public AutoMapperTab()
+            : this(Mapper.Engine.ConfigurationProvider)
+        {
+        }
+
+        public AutoMapperTab(IConfigurationProvider configuration)
+        {
+            if (configuration == null)
+            {
+                throw new ArgumentNullException("configuration");
+            }
+
+            this._configuration = configuration;
+        }
 
         public override string Name
         {
@@ -25,17 +43,13 @@ namespace Glimpse.AutoMapper
 
             if (context != null)
             {
-                var configuration = context.GetRequestContext<IConfigurationProvider>();
-                if (configuration != null)
+                TypeMap[] typeMaps = this._configuration.GetAllTypeMaps();
+
+                foreach (var profileName in typeMaps.Select(map => map.Profile).Distinct())
                 {
-                    TypeMap[] typeMaps = configuration.GetAllTypeMaps();
+                    var typeMapSection = new TypeMapTabSection(this._configuration, profileName);
 
-                    foreach (var profileName in typeMaps.Select(map => map.Profile).Distinct())
-                    {
-                        var typeMapSection = new TypeMapTabSection(configuration, profileName);
-
-                        plugin.AddRow().Column(profileName).Column(typeMapSection);
-                    }
+                    plugin.AddRow().Column(profileName).Column(typeMapSection);
                 }
             }
 
