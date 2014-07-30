@@ -6,6 +6,11 @@ Description
 
 A simple Glimpse plugin to display all configured type mappings for AutoMapper.
 
+Sample screenshot
+-----------------
+
+![Glimpse.AutoMapper screenshot](/raw/screenshots/screenshots/Glimpse.AutoMapper.1.0.2.png)
+
 Usage
 -----
 
@@ -19,8 +24,6 @@ Support
 -------
 
 Create an issue here on GitHub, or fork the project and send a pull request.
-
-
 
 Open Source License
 -------------------

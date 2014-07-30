@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glimpse.AutoMapper.TestSite", "Glimpse.AutoMapper.TestSite\Glimpse.AutoMapper.TestSite.csproj", "{DF5174EC-810D-49D3-AD81-1BA5BF9485AF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "screenshots", "screenshots", "{2F0EA594-DA5C-4FFE-9B49-2E5531F2A8D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,5 +40,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F0EA594-DA5C-4FFE-9B49-2E5531F2A8D2} = {CE0A69D4-B1AC-4872-B153-7DF40973132A}
 	EndGlobalSection
 EndGlobal
