@@ -9,7 +9,7 @@ A simple Glimpse plugin to display all configured type mappings for AutoMapper.
 Sample screenshot
 -----------------
 
-![Glimpse.AutoMapper screenshot](/raw/screenshots/screenshots/Glimpse.AutoMapper.1.0.2.png)
+![Glimpse.AutoMapper screenshot](../screenshots/screenshots/Glimpse.AutoMapper.1.0.2.png?raw=true)
 
 Usage
 -----
