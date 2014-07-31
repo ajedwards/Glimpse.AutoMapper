@@ -18,8 +18,6 @@ Either build the Glimpse.AutoMapper project and reference the 'Glimpse.AutoMappe
 project or 'Install-Package Glimpse.AutoMapper' in the Package Manager Console to install the 
 [NuGet package](http://nuget.org/packages/Glimpse.AutoMapper).
 
-To enable the plugin, you have to call the ActivateGlimpse() extension method in your IContainer.
-
 Support
 -------
 
