@@ -8,28 +8,57 @@ namespace Glimpse.AutoMapper.TestSite
     {
         public static void CreateMaps()
         {
-            Mapper.CreateMap<byte, byte>();
-            Mapper.AddProfile<TestProfile1>();
-            Mapper.AddProfile<TestProfile2>();
+            Mapper.Initialize(configuration =>
+            {
+                configuration.CreateMap<byte, byte>();
+                configuration.AddProfile<TestProfile1>();
+                configuration.AddProfile<TestProfile2>();
+            });
         }
 
         private class TestProfile1 : Profile
         {
-            protected override void Configure()
+            public TestProfile1()
+                : base(@"TestProfile1")
             {
                 this.CreateMap<DateTime, DateTime>();
-                this.CreateMap<int, int>().As<short>();
+                this.CreateMap<TestA, TestBaseB>().As<TestB>();
                 this.CreateMap<string, string>();
             }
         }
 
         private class TestProfile2 : Profile
         {
-            protected override void Configure()
+            public TestProfile2()
+                : base(@"TestProfile2")
             {
                 this.CreateMap<short, short>();
-                this.CreateMap<decimal, decimal>().As<float>();
+                this.CreateMap<TestB, TestBaseA>().As<TestA>();
             }
         }
     }
+
+    #region Test Classes
+
+    internal abstract class TestBaseA
+    {
+        public string Id { get; set; }
+    }
+
+    internal class TestA : TestBaseA
+    {
+        public string Name { get; set; }
+    }
+
+    internal abstract class TestBaseB
+    {
+        public string Id { get; set; }
+    }
+
+    internal class TestB : TestBaseB
+    {
+        public string Name { get; set; }
+    }
+
+    #endregion
 }

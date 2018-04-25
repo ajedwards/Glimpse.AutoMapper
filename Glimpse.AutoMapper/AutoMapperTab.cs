@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 
 using AutoMapper;
@@ -16,38 +15,25 @@ namespace Glimpse.AutoMapper
         private readonly IConfigurationProvider _configuration;
 
         public AutoMapperTab()
-            : this(Mapper.Engine.ConfigurationProvider)
+            : this(Mapper.Configuration)
         {
         }
 
         public AutoMapperTab(IConfigurationProvider configuration)
         {
-            if (configuration == null)
-            {
-                throw new ArgumentNullException("configuration");
-            }
-
-            this._configuration = configuration;
+            this._configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        public override string Name
-        {
-            get
-            {
-                return "AutoMapper";
-            }
-        }
+        public override string Name => "AutoMapper";
 
         public override object GetData(ITabContext context)
         {
             var plugin = Plugin.Create(Headers);
 
             TypeMap[] typeMaps = this._configuration.GetAllTypeMaps();
-
-            foreach (var profileName in typeMaps.Select(map => map.Profile).Distinct())
+            foreach (var profileName in typeMaps.Select(map => map.Profile.Name).Distinct())
             {
                 var typeMapSection = new TypeMapTabSection(this._configuration, profileName);
-
                 plugin.AddRow().Column(profileName).Column(typeMapSection);
             }
 

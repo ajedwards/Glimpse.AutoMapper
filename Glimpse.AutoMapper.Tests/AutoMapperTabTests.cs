@@ -22,20 +22,23 @@ namespace Glimpse.AutoMapper.Tests
         [Test]
         public void TestExecuteOnAlwaysReturnsEndRequest()
         {
+            Mapper.Reset();
+            Mapper.Initialize(configuration => { });
+
             var testTab = new AutoMapperTab();
 
             Assert.AreEqual(RuntimeEvent.EndRequest, testTab.ExecuteOn);
         }
 
         [Test]
-        public void TestGetDataReturnsTabSectionWithHeaderRowAndOneRowPerProfile()
+        public void TestGetDataReturnsTabSectionWithHeaderRowAndOneRowPerProfileWithTypeMaps()
         {
             var expectedProfiles = new Profile[] { new TestProfile1(), new TestProfile2(), new TestProfile3() };
 
             Mapper.Reset();
             Mapper.Initialize(configuration => expectedProfiles.ToList().ForEach(configuration.AddProfile));
 
-            var actualTabSection = (TabSection)new AutoMapperTab(Mapper.Engine.ConfigurationProvider).GetData(null);
+            var actualTabSection = (TabSection)new AutoMapperTab(Mapper.Configuration).GetData(null);
 
             Assert.AreEqual(1 + expectedProfiles.Length, actualTabSection.Rows.Count());
         }
@@ -44,8 +47,9 @@ namespace Glimpse.AutoMapper.Tests
         public void TestGetDataReturnsTabSectionWithHeaderRowOnlyForContextWithNoTypeMaps()
         {
             Mapper.Reset();
+            Mapper.Initialize(configuration => { });
 
-            var actualTabSection = (TabSection)new AutoMapperTab(Mapper.Engine.ConfigurationProvider).GetData(null);
+            var actualTabSection = (TabSection)new AutoMapperTab(Mapper.Configuration).GetData(null);
 
             Assert.AreEqual(1, actualTabSection.Rows.Count());
         }
@@ -54,6 +58,7 @@ namespace Glimpse.AutoMapper.Tests
         public void TestGetDataReturnsTabSectionWithHeaderRowOnlyForNullContext()
         {
             Mapper.Reset();
+            Mapper.Initialize(configuration => { });
 
             var actualTabSection = (TabSection)new AutoMapperTab().GetData(null);
 
@@ -63,6 +68,9 @@ namespace Glimpse.AutoMapper.Tests
         [Test]
         public void TestNameAlwaysReturnsAutoMapper()
         {
+            Mapper.Reset();
+            Mapper.Initialize(configuration => { });
+
             var testTab = new AutoMapperTab();
 
             Assert.AreEqual("AutoMapper", testTab.Name);
@@ -71,6 +79,9 @@ namespace Glimpse.AutoMapper.Tests
         [Test]
         public void TestRequestContextTypeOnAlwaysReturnsNull()
         {
+            Mapper.Reset();
+            Mapper.Initialize(configuration => { });
+
             var testTab = new AutoMapperTab();
 
             Assert.IsNull(testTab.RequestContextType);
@@ -78,7 +89,7 @@ namespace Glimpse.AutoMapper.Tests
 
         private class TestProfile1 : Profile
         {
-            protected override void Configure()
+            public TestProfile1()
             {
                 this.CreateMap<DateTime, DateTime>();
             }
@@ -86,20 +97,20 @@ namespace Glimpse.AutoMapper.Tests
 
         private class TestProfile2 : Profile
         {
-            protected override void Configure()
+            public TestProfile2()
             {
-                this.CreateMap<DateTime, DateTime>();
-                this.CreateMap<int, int>();
+                this.CreateMap<Guid, Guid>();
+                this.CreateMap<string, string>();
             }
         }
 
         private class TestProfile3 : Profile
         {
-            protected override void Configure()
+            public TestProfile3()
             {
-                this.CreateMap<DateTime, DateTime>();
-                this.CreateMap<int, int>();
-                this.CreateMap<string, string>();
+                this.CreateMap<short, short>();
+                this.CreateMap<decimal, decimal>();
+                this.CreateMap<float, float>();
             }
         }
     }

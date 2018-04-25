@@ -16,10 +16,10 @@ namespace Glimpse.AutoMapper
         {
             if (configuration == null)
             {
-                throw new ArgumentNullException("configuration");
+                throw new ArgumentNullException(nameof(configuration));
             }
 
-            foreach (var map in configuration.GetAllTypeMaps().Where(map => map.Profile == profileName))
+            foreach (var map in configuration.GetAllTypeMaps().Where(map => map.Profile.Name == profileName))
             {
                 this.AddRow()
                     .Column(map.SourceType != null ? map.SourceType.FullName : null)

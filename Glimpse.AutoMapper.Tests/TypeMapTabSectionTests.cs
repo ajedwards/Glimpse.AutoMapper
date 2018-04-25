@@ -18,7 +18,7 @@ namespace Glimpse.AutoMapper.Tests
             Mapper.Reset();
             Mapper.Initialize(configuration => configuration.AddProfile<TestProfile>());
 
-            var actualTabSection = new TypeMapTabSection(Mapper.Engine.ConfigurationProvider, expectedProfileName);
+            var actualTabSection = new TypeMapTabSection(Mapper.Configuration, expectedProfileName);
 
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual(1 + TestProfile.TypeMapCount, actualTabSection.Rows.Count());
@@ -33,7 +33,7 @@ namespace Glimpse.AutoMapper.Tests
             Mapper.Initialize(
                 configuration => expectedMappingTypes.ToList().ForEach(type => configuration.CreateMap(type, type)));
 
-            var actualTabSection = new TypeMapTabSection(Mapper.Engine.ConfigurationProvider, string.Empty);
+            var actualTabSection = new TypeMapTabSection(Mapper.Configuration, string.Empty);
 
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual(1 + expectedMappingTypes.Length, actualTabSection.Rows.Count());
@@ -47,7 +47,7 @@ namespace Glimpse.AutoMapper.Tests
             Mapper.Reset();
             Mapper.Initialize(configuration => configuration.AddProfile<TestEmptyProfile>());
 
-            var actualTabSection = new TypeMapTabSection(Mapper.Engine.ConfigurationProvider, expectedProfileName);
+            var actualTabSection = new TypeMapTabSection(Mapper.Configuration, expectedProfileName);
 
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual(1, actualTabSection.Rows.Count());
@@ -57,8 +57,9 @@ namespace Glimpse.AutoMapper.Tests
         public void TestConstructorReturnsNewTabSectionWithHeaderRowOnlyForNullProfileName()
         {
             Mapper.Reset();
+            Mapper.Initialize(configuration => {});
 
-            var actualTabSection = new TypeMapTabSection(Mapper.Engine.ConfigurationProvider, null);
+            var actualTabSection = new TypeMapTabSection(Mapper.Configuration, null);
 
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual(1, actualTabSection.Rows.Count());
@@ -70,8 +71,9 @@ namespace Glimpse.AutoMapper.Tests
             var unknownProfileName = Guid.NewGuid().ToString();
 
             Mapper.Reset();
+            Mapper.Initialize(configuration => { });
 
-            var actualTabSection = new TypeMapTabSection(Mapper.Engine.ConfigurationProvider, unknownProfileName);
+            var actualTabSection = new TypeMapTabSection(Mapper.Configuration, unknownProfileName);
 
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual(1, actualTabSection.Rows.Count());
@@ -93,7 +95,7 @@ namespace Glimpse.AutoMapper.Tests
         {
             public const int TypeMapCount = 3;
 
-            protected override void Configure()
+            public TestProfile()
             {
                 this.CreateMap<DateTime, DateTime>();
                 this.CreateMap<int, int>();
