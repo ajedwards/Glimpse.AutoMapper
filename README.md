@@ -4,7 +4,7 @@ Glimpse for AutoMapper [![Build status](https://ci.appveyor.com/api/projects/sta
 Description
 -----------
 
-A simple Glimpse plugin to display all configured type mappings for AutoMapper.
+A simple [Glimpse](http://getglimpse.com) plugin to display all configured type mappings for [AutoMapper](https://automapper.org).
 
 Sample screenshot
 -----------------
@@ -17,6 +17,11 @@ Usage
 Either build the Glimpse.AutoMapper project and reference the 'Glimpse.AutoMapper.dll' assembly in your Glimpse-enabled
 project or 'Install-Package Glimpse.AutoMapper' in the Package Manager Console to install the 
 [NuGet package](http://nuget.org/packages/Glimpse.AutoMapper).
+
+Test site
+---------
+
+There is a sample ASP.NET MVC site with the Glimpse.AutoMapper plugin included in the [Glimpse.AutoMapper.TestSite](https://github.com/ajedwards/Glimpse.AutoMapper/tree/master/Glimpse.AutoMapper.TestSite) project.
 
 Support
 -------
